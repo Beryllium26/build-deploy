@@ -3,9 +3,6 @@
 $ENV{JAVA_HOME}="/usr/lib/jvm/java-oracle";
 $ENV{PATH}="/usr/lib/jvm/java-oracle/bin:/usr/local/bin:/usr/bin:/bin";
 
-#$ENV{JAVA_HOME}="/usr/lib/jvm/java-6-sun";
-#$ENV{PATH}="/usr/lib/jvm/java-6-sun/bin:/usr/local/bin:/usr/bin:/bin";
-
 # $rev to contain eventual svn version if older release is required
 $rev="";
 #system("clear");
@@ -197,9 +194,9 @@ if (-d $workdir ) {
 		   sleep(6);
 		   system("$sshk $_ '/usr/bin/pkill java'");
 		   print " \nRemoving existing $lcmod app from target's webapps ROOT dir\n";
-		   system("$sshk $_ 'rm -f  /apps/tomcat/webapps/ROOT.war'"); 
-		   system("$sshk $_ 'rm -fr  /apps/tomcat/webapps/ROOT/'"); 
-		   system("$sshk $_ 'rm -fr  /apps/tomcat/work/Catalina/*'"); 
+		   system("$sshk $_ 'rm  /apps/tomcat/webapps/ROOT.war'"); 
+		   system("$sshk $_ 'rm -r  /apps/tomcat/webapps/ROOT/'"); 
+		   system("$sshk $_ 'rm -r  /apps/tomcat/work/Catalina/*'"); 
 		   system("$sshk $_ 'rm -r  /apps/tomcat/temp/'");
 		   system("$sshk $_ 'mkdir  /apps/tomcat/temp && chmod 0750 /apps/tomcat/temp'");
 		   print "\n Copying and deploying $lcmod.war to $_:/apps/tomcat/webapps/ROOT ...\n";
